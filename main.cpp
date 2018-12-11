@@ -8,6 +8,11 @@ int cell_cnt = 19;
 int main(void)
 {
     RenderWindow window(VideoMode(cell_size*cell_cnt, cell_size*cell_cnt), "Go Game");
+    Texture t1;t1.loadFromFile("black_stone.bmp");
+    Texture t2;t2.loadFromFile("white_stone.bmp");
+    t1.setSmooth(true);t2.setSmooth(true);
+    Sprite bs(t1), ws(t2);
+
     Vertex line[] = 
     {
         Vertex(Vector2f(10,10)),
@@ -70,7 +75,12 @@ int main(void)
             stone.setOutlineThickness(-2); // inner grow
 
             stone.setPosition(xx, yy);
-            window.draw(stone);
+            //window.draw(stone);
+
+            ws.setScale(1.0*cell_size/bs.getLocalBounds().width,1.0*cell_size/bs.getLocalBounds().height);
+            ws.setPosition(xx,yy);
+            window.draw(ws);
+
         };
         draw_stone();
         window.display();
