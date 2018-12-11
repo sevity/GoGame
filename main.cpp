@@ -15,12 +15,22 @@ int main(void)
     };
     line[0].color = Color::White;
     line[1].color = Color::White;
+    int xx=0,yy=0;
     while(window.isOpen())
     {
         Event e;
         while(window.pollEvent(e))
         {
             if(e.type == Event::Closed) window.close();
+            if(e.type == Event::MouseButtonPressed)
+            {
+                printf("mouse button pressed!\n");
+                if(e.mouseButton.button == Mouse::Left)
+                {
+                    xx=int(e.mouseButton.x/cell_size)*cell_size;
+                    yy=int(e.mouseButton.y/cell_size)*cell_size;
+                }
+            }
         }
         window.clear(Color::Yellow);
 
@@ -59,15 +69,7 @@ int main(void)
             stone.setOutlineColor(Color::Black);
             stone.setOutlineThickness(-2); // inner grow
 
-            stone.setPosition(0, 0);
-            window.draw(stone);
-            stone.setPosition(cell_size, 0);
-            window.draw(stone);
-            
-            stone.setFillColor(Color::Black);
-            stone.setPosition(0, cell_size);
-            window.draw(stone);
-            stone.setPosition(cell_size, cell_size);
+            stone.setPosition(xx, yy);
             window.draw(stone);
         };
         draw_stone();
