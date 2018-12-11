@@ -51,6 +51,26 @@ int main(void)
             }
         };
         draw_board();
+
+        auto draw_stone = [&]()
+        {
+            CircleShape stone(1.0*cell_size/2);
+            stone.setFillColor(Color::White);
+            stone.setOutlineColor(Color::Black);
+            stone.setOutlineThickness(-2); // inner grow
+
+            stone.setPosition(0, 0);
+            window.draw(stone);
+            stone.setPosition(cell_size, 0);
+            window.draw(stone);
+            
+            stone.setFillColor(Color::Black);
+            stone.setPosition(0, cell_size);
+            window.draw(stone);
+            stone.setPosition(cell_size, cell_size);
+            window.draw(stone);
+        };
+        draw_stone();
         window.display();
 
     }
