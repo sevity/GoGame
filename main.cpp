@@ -7,7 +7,7 @@
 //7. AI(OK), Implement pipeline(OK)
 //8. Remove Update Delay..OK
 //DONE!
-//Thanks for watching!!!
+//Thanks for watching!!! 
 
 #include <SFML/Graphics.hpp>
 using namespace std;
